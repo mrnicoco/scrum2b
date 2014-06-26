@@ -354,3 +354,12 @@ span.error {
   float: left;
   display:block;
 }
+
+
+.as_s2b_passed {
+  background-color: lightgreen;
+}
+
+.as_s2b_failed {
+  background-color: lightcoral;
+}
