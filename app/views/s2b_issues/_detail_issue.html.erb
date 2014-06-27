@@ -4,8 +4,8 @@
   <% end %>
   <div class="detail_issue issue">  
     <%= render :partial => 'issue', :locals => {:issue => @issue} %>
+    <span id="qa_passed"> QA Passed ! </span>
   </div>
-  <div id="qa_passed"> QA Passed ! </div>
   <% if editable_for_project? %>
     <%= render :partial => '/s2b_notes/form_new', :locals => {:issue => @issue, :project => @project} %>
   <% end %>
