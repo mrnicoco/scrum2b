@@ -23,7 +23,7 @@
 <script>
 $(document).ready(function() { 
   
-  $("#qa_passed").clik(function() {
+  $("#qa_passed").click(function() {
     $.ajax({
       url : '/s2b_issues/set_qa_check/<%= @issue.id %>',
       type : "POST",
