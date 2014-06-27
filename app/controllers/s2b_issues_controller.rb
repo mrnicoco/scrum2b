@@ -4,7 +4,7 @@ class S2bIssuesController < S2bApplicationController
   before_filter :find_project
   before_filter :find_issue_from_param
   before_filter :check_before
-  before_filter lambda { check_permission(:edit) }, :only => [:update, :delete_attach, :delete]
+  before_filter lambda { check_permission(:edit) }, :only => [:update, :delete_attach, :delete, :set_qa_check]
 
   rescue_from Query::StatementInvalid, :with => :query_statement_invalid
 
@@ -85,6 +85,16 @@ class S2bIssuesController < S2bApplicationController
       render :json => {:result => "success"}
     else
       render :json => {:result => "error"}
+    end
+  end
+  
+  def set_qa_check
+    issue = Issue.find(params[:id])
+    issue.custom_field_values = {4 => params[:qa_value]}
+    if issue.save
+      render :json => {:result => "success"}
+    else
+      render :json => {:result => "failure"}
     end
   end
   

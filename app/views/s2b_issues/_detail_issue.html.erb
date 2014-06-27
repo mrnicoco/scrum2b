@@ -5,6 +5,7 @@
   <div class="detail_issue issue">  
     <%= render :partial => 'issue', :locals => {:issue => @issue} %>
   </div>
+  <div id="qa_passed"> QA Passed ! </div>
   <% if editable_for_project? %>
     <%= render :partial => '/s2b_notes/form_new', :locals => {:issue => @issue, :project => @project} %>
   <% end %>
@@ -21,6 +22,22 @@
 </style>
 <script>
 $(document).ready(function() { 
+  
+  $("#qa_passed").clik(function() {
+    $.ajax({
+      url : '/s2b_issues/set_qa_check/<%= @issue.id %>',
+      type : "POST",
+      data : 'qa_value=' + "Passed",
+      dataType : "json",
+      success : function(data) {
+        alert(data);
+      },
+      failure : function(data) {
+        alert(data);
+      }
+    });
+  });
+  
     $("#detail_issue").dialog({
       width:1000,
       height:800,

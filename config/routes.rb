@@ -24,6 +24,7 @@ post "s2b_issues/show" => "s2b_issues#show"
 get  "s2b_issues/edit" => "s2b_issues#edit"
 put  "s2b_issues/update" => "s2b_issues#update"
 post "s2b_issues/delete" => "s2b_issues#delete"
+post "s2b_issues/set_qa_check/:id" => "s2b_issues#set_qa_check"
 
 post "s2b_issues/delete_attach" => "s2b_issues#delete_attach"
 
